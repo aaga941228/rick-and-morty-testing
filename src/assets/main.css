@@ -1,1 +1,20 @@
 @import 'tailwindcss';
+
+@theme {
+  /* Colores personalizados */
+  --color-portal-green: #97ce4c;
+  --color-portal-dark: #7aa13d;
+  --color-science-cyan: #00b0c8;
+  --color-space-dark: #24282f;
+  --color-space-light: #3c3e44;
+
+  /* Fuentes (opcional) */
+  --font-sans: 'Inter', 'ui-sans-serif', 'system-ui', sans-serif;
+}
+
+/* Opcional: Un fondo sutil para toda la app */
+@layer base {
+  body {
+    @apply bg-gray-50 text-space-dark;
+  }
+}
