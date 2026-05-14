@@ -67,8 +67,6 @@ import { useAuthStore } from '../stores/auth'
 const router = useRouter()
 const authStore = useAuthStore()
 
-console.log('LoginView.authStore', authStore.isAuthenticated)
-
 const username = ref('')
 const password = ref('')
 const submited = ref(false)
