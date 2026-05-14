@@ -59,11 +59,15 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { z } from 'zod'
 import { User, Lock, Loader2 } from 'lucide-vue-next'
 import { useAuthStore } from '../stores/auth'
 
+const router = useRouter()
 const authStore = useAuthStore()
+
+console.log('LoginView.authStore', authStore.isAuthenticated)
 
 const username = ref('')
 const password = ref('')
@@ -110,7 +114,7 @@ const onLogin = () => {
     if (isValid) {
       if (username.value.trim() === 'admin123' && password.value.trim() === 'admin') {
         authStore.login(username.value.trim())
-        // aqui haremos el redireccionamiento una vez tengamos la vista hecha
+        router.push('/dashboard')
       } else {
         showError.value = true
       }
