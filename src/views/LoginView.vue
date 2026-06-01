@@ -78,7 +78,9 @@ const passwordMessage = ref('')
 const usernameSchema = z.string().min(8, 'Minimum 8 characters')
 const passwordSchema = z.string().min(5, 'Minimum 5 characters')
 
-const disabled = computed(() => submited.value || !username.value || !password.value)
+const disabled = computed(
+  () => submited.value || username.value.trim().length === 0 || password.value.trim().length === 0,
+)
 
 const validate = () => {
   const emailResult = usernameSchema.safeParse(username.value)
