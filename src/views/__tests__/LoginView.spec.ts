@@ -2,8 +2,16 @@ import { nextTick } from 'vue'
 import { mount, VueWrapper } from '@vue/test-utils'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { createTestingPinia } from '@pinia/testing'
-import LoginView from '../LoginView.vue'
-import { useAuthStore } from '../../stores/auth'
+import LoginView from '@/views/LoginView.vue'
+import { useAuthStore } from '@/stores/auth'
+
+vi.mock('vue-router', () => ({
+  useRouter: () => ({
+    push: vi.fn<(path: string) => void>(),
+    replace: vi.fn<(path: string) => void>(),
+  }),
+  useRoute: () => ({}),
+}))
 
 describe('LoginView.vue - Integration Test', () => {
   let wrapper: VueWrapper<unknown>
